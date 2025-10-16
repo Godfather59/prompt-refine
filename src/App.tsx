@@ -18,15 +18,6 @@ function App() {
                 Guided questions to craft higher quality prompts for coding LLMs.
               </p>
             </div>
-            <a
-              href="https://github.com/Godfather59/prompt-refine"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-            >
-              <Github className="h-4 w-4" />
-              View Source
-            </a>
           </div>
         </header>
         <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 pb-12 pt-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(360px,420px)] lg:items-start">
@@ -35,7 +26,6 @@ function App() {
         </main>
         <footer className="border-t border-border/60 bg-background/90">
           <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-xs text-muted-foreground">
-            <span>Built with React, Tailwind CSS, and shadcn/ui.</span>
             <span>(c) {new Date().getFullYear()} Prompt Refinery</span>
           </div>
         </footer>
