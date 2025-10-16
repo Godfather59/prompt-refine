@@ -7,6 +7,8 @@ describe("buildPrompt", () => {
     const prompt = buildPrompt(defaultWizardState);
     expect(prompt).toContain("## Role");
     expect(prompt).toContain("## Task");
+    expect(prompt).toContain("## Front-end Frameworks");
+    expect(prompt).toContain("## Back-end Runtime");
     expect(prompt).toContain("## Context");
     expect(prompt).toContain("## Additional Notes");
   });
@@ -17,6 +19,7 @@ describe("buildPrompt", () => {
       task: "unknown",
       language: "unknown",
       framework: "unknown",
+      frontendFrameworks: ["unknown"],
       context: { details: "", snippet: "" },
     });
 
@@ -40,6 +43,7 @@ describe("computeChecklist", () => {
       task: "unknown",
       language: "unknown",
       framework: "unknown",
+      frontendFrameworks: ["unknown"],
       constraints: { selections: [], custom: "" },
       style: {
         detailLevel: "unknown",

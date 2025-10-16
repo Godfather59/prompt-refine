@@ -11,6 +11,11 @@ import {
   Gem,
   CircuitBoard,
   Feather,
+  Droplets,
+  Spline,
+  Infinity as InfinityIcon,
+  Sigma,
+  Send,
 } from "lucide-react";
 import type { WizardData } from "../lib/schema";
 import {
@@ -83,6 +88,36 @@ const options = [
     label: "Swift",
     description: "Swift 6 with structured concurrency in mind.",
     icon: <Feather className="h-4 w-4" />,
+  },
+  {
+    value: "elixir",
+    label: "Elixir",
+    description: "Elixir 1.17 with OTP supervision patterns.",
+    icon: <Droplets className="h-4 w-4" />,
+  },
+  {
+    value: "scala",
+    label: "Scala",
+    description: "Scala 3 leveraging functional and OO hybrids.",
+    icon: <Spline className="h-4 w-4" />,
+  },
+  {
+    value: "clojure",
+    label: "Clojure",
+    description: "Clojure with immutable data and REPL workflows.",
+    icon: <InfinityIcon className="h-4 w-4" />,
+  },
+  {
+    value: "fsharp",
+    label: "F#",
+    description: "F# 8 functional-first guidance on .NET.",
+    icon: <Sigma className="h-4 w-4" />,
+  },
+  {
+    value: "dart",
+    label: "Dart",
+    description: "Dart 3 with null safety for Flutter or server apps.",
+    icon: <Send className="h-4 w-4" />,
   },
   {
     value: "sql",

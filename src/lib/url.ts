@@ -4,6 +4,7 @@ import type { WizardData } from "./schema";
 const keyMap = {
   task: "t",
   language: "l",
+  frontendFrameworks: "ff",
   framework: "f",
   contextDetails: "cd",
   contextSnippet: "cs",
@@ -24,6 +25,12 @@ export function encodeStateToQuery(state = defaultWizardState) {
   const params = new URLSearchParams();
   params.set(keyMap.task, state.task);
   params.set(keyMap.language, state.language);
+  if (state.frontendFrameworks.length > 0) {
+    params.set(
+      keyMap.frontendFrameworks,
+      state.frontendFrameworks.join(arraySeparator),
+    );
+  }
   params.set(keyMap.framework, state.framework);
   if (state.context.details.trim()) {
     params.set(keyMap.contextDetails, state.context.details);
@@ -75,6 +82,13 @@ export function decodeStateFromQuery(search: string) {
 
   const language = valueOrUndefined(keyMap.language);
   if (language) partial.language = language as WizardData["language"];
+
+  const frontendFrameworks = valueOrUndefined(keyMap.frontendFrameworks);
+  if (frontendFrameworks) {
+    partial.frontendFrameworks = frontendFrameworks
+      .split(arraySeparator)
+      .filter(Boolean) as WizardData["frontendFrameworks"];
+  }
 
   const framework = valueOrUndefined(keyMap.framework);
   if (framework) partial.framework = framework as WizardData["framework"];

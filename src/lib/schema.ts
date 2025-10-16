@@ -22,18 +22,17 @@ export const languageValues = [
   "ruby",
   "kotlin",
   "swift",
+  "elixir",
+  "scala",
+  "clojure",
+  "fsharp",
+  "dart",
   "sql",
   "bash",
   "unknown",
 ] as const;
 
-export const frameworkValues = [
-  "node",
-  "deno",
-  "bun",
-  "express",
-  "fastify",
-  "nest",
+export const frontendFrameworkValues = [
   "react",
   "next",
   "remix",
@@ -42,6 +41,20 @@ export const frameworkValues = [
   "svelte",
   "sveltekit",
   "nuxt",
+  "solid",
+  "qwik",
+  "astro",
+  "ember",
+  "unknown",
+] as const;
+
+export const backendFrameworkValues = [
+  "node",
+  "deno",
+  "bun",
+  "express",
+  "fastify",
+  "nest",
   "django",
   "flask",
   "fastapi",
@@ -54,6 +67,10 @@ export const frameworkValues = [
   "vapor",
   "axum",
   "rocket",
+  "phoenix",
+  "play",
+  "pedestal",
+  "shelf",
   "unknown",
 ] as const;
 
@@ -100,7 +117,11 @@ export const targetValues = [
 export const wizardSchema = z.object({
   task: z.enum(taskValues),
   language: z.enum(languageValues),
-  framework: z.enum(frameworkValues),
+  framework: z.enum(backendFrameworkValues),
+  frontendFrameworks: z
+    .array(z.enum(frontendFrameworkValues))
+    .max(frontendFrameworkValues.length)
+    .default(["react"]),
   context: z.object({
     details: z
       .string()
@@ -139,7 +160,8 @@ export type WizardData = z.infer<typeof wizardSchema>;
 export const defaultWizardState: WizardData = {
   task: "write-code",
   language: "javascript-typescript",
-  framework: "react",
+  frontendFrameworks: ["react"],
+  framework: "node",
   context: {
     details: "",
     snippet: "",

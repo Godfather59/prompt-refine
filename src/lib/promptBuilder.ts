@@ -34,11 +34,50 @@ const languageCopy: Record<WizardData["language"], string> = {
     "Use Kotlin targeting the latest JVM tooling with null-safety and coroutine best practices.",
   swift:
     "Produce Swift 6 code mindful of concurrency best practices and Apple platform guidelines.",
+  elixir:
+    "Target Elixir 1.17 with OTP patterns. Highlight concurrency via processes and Supervisors.",
+  scala:
+    "Apply Scala 3 idioms with strong typing, pattern matching, and functional cores.",
+  clojure:
+    "Focus on Clojure with immutable data, REPL-driven workflows, and JVM interop notes.",
+  fsharp:
+    "Write F# 8 with emphasis on functional-first patterns and type inference.",
+  dart:
+    "Use Dart 3 with null safety and structured async/await for Flutter or server apps.",
   sql: "Provide SQL that is portable across common relational databases.",
   bash:
     "Deliver POSIX-friendly shell scripts and note platform caveats when applicable.",
   unknown:
     "Language is unspecified. Confirm with the user; suggest TypeScript as a safe default if they defer.",
+};
+
+const frontendFrameworkCopy: Record<
+  WizardData["frontendFrameworks"][number],
+  string
+> = {
+  react: "Use modern React with hooks, suspense, and component composition.",
+  next: "Follow Next.js 15 conventions with server actions and app router best practices.",
+  remix:
+    "Adopt Remix loaders/actions with progressive enhancement and web fundamentals.",
+  angular:
+    "Target Angular 19 with standalone components, signals, and typed reactive forms.",
+  vue:
+    "Use Vue 3 composition API, `<script setup>`, and single-file component patterns.",
+  svelte:
+    "Write Svelte 5 components leveraging stores, reactivity, and compile-time optimizations.",
+  sveltekit:
+    "Structure SvelteKit apps with filesystem routing, load functions, and server endpoints.",
+  nuxt: "Follow Nuxt 3 patterns with composables, Nitro server routes, and hybrid rendering.",
+  solid:
+    "Use SolidStart and fine-grained reactivity for performant UI components.",
+  qwik:
+    "Embrace Qwik's resumability model with lazy-loaded, fine-grained components.",
+  astro:
+    "Compose Astro islands, partial hydration, and integration-friendly component slots.",
+  ember:
+    "Adhere to Ember Octane conventions with autotracking, Glimmer components, and Ember Data.",
+  unknown:
+    "Front-end stack is unclear. Confirm whether the UI requires React, Vue, or another framework.",
 };
 
 const frameworkCopy: Record<WizardData["framework"], string> = {
@@ -51,19 +90,6 @@ const frameworkCopy: Record<WizardData["framework"], string> = {
     "Use Fastify's plugin architecture and schema-driven validation for performance-sensitive APIs.",
   nest:
     "Follow NestJS modular structure with decorators, DI containers, and TypeScript-first patterns.",
-  react: "Use modern React with hooks and functional components.",
-  next: "Follow Next.js 15 conventions with server components where appropriate.",
-  remix:
-    "Adopt Remix conventions with loader/action separation and progressive enhancement.",
-  angular:
-    "Target Angular 19 with standalone components and typed reactive forms.",
-  vue:
-    "Use Vue 3 with the composition API and `<script setup>` syntax where appropriate.",
-  svelte:
-    "Write Svelte 5 components with stores and reactivity idioms.",
-  sveltekit:
-    "Structure SvelteKit apps with filesystem routing and load functions.",
-  nuxt: "Follow Nuxt 3 patterns with server routes and composables.",
   django: "Adhere to Django 5 best practices and built-in security safeguards.",
   flask: "Structure Flask apps with blueprints and configuration separation.",
   fastapi:
@@ -83,6 +109,14 @@ const frameworkCopy: Record<WizardData["framework"], string> = {
     "Use Axum with Tower middleware, async handlers, and type-safe extractors.",
   rocket:
     "Follow Rocket's request guards, responders, and async support for ergonomic routing.",
+  phoenix:
+    "Build Elixir services on Phoenix with LiveView, Ecto, and OTP supervision strategies.",
+  play:
+    "Use Play Framework for Scala with typed routing, controllers, and Akka-based concurrency.",
+  pedestal:
+    "Structure Pedestal services with interceptors, immutability, and REPL-driven workflows.",
+  shelf:
+    "Serve Dart applications via Shelf with middleware, async handlers, and isolates.",
   unknown:
     "Framework/runtime not specified. Ask for clarification or assume a lightweight runtime temporarily.",
 };
@@ -264,7 +298,15 @@ export function buildPrompt(state: WizardData) {
 
   sections.push("## Language", languageCopy[state.language]);
 
-  sections.push("## Framework / Runtime", frameworkCopy[state.framework]);
+  const frontendDescriptions =
+    state.frontendFrameworks.length > 0
+      ? state.frontendFrameworks.map((value) => frontendFrameworkCopy[value])
+      : [
+          "Front-end stack not specified. Confirm whether a dedicated UI framework is required.",
+        ];
+  sections.push("## Front-end Frameworks", formatList(frontendDescriptions));
+
+  sections.push("## Back-end Runtime", frameworkCopy[state.framework]);
 
   const contextLines: string[] = [];
   if (state.context.details.trim()) {

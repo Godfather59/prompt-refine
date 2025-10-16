@@ -18,6 +18,10 @@ type WizardStore = {
   previous: () => void;
   setTask: (value: WizardData["task"]) => void;
   setLanguage: (value: WizardData["language"]) => void;
+  setFrontendFrameworks: (value: WizardData["frontendFrameworks"]) => void;
+  toggleFrontendFramework: (
+    value: WizardData["frontendFrameworks"][number],
+  ) => void;
   setFramework: (value: WizardData["framework"]) => void;
   updateContext: (value: Partial<WizardData["context"]>) => void;
   toggleConstraint: (
@@ -81,6 +85,23 @@ export const useWizardStore = create<WizardStore>((set, get) => ({
   setLanguage(value) {
     set((state) => ({
       data: { ...state.data, language: value },
+    }));
+  },
+  setFrontendFrameworks(value) {
+    set((state) => ({
+      data: { ...state.data, frontendFrameworks: value },
+    }));
+  },
+  toggleFrontendFramework(value) {
+    set((state) => ({
+      data: {
+        ...state.data,
+        frontendFrameworks: toggleWithUnknown(
+          state.data.frontendFrameworks,
+          value,
+          "unknown",
+        ) as WizardData["frontendFrameworks"],
+      },
     }));
   },
   setFramework(value) {

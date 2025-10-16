@@ -21,7 +21,8 @@ export const templates: PromptTemplate[] = [
     preset: {
       task: "debugging",
       language: "javascript-typescript",
-      framework: "react",
+      frontendFrameworks: ["react"],
+      framework: "node",
       constraints: {
         selections: ["project-conventions", "time-space-limits"],
         custom: "Document the root cause before proposing the fix.",
@@ -50,6 +51,7 @@ export const templates: PromptTemplate[] = [
     preset: {
       task: "write-code",
       language: "python",
+      frontendFrameworks: [],
       framework: "unknown",
       constraints: {
         selections: ["explain-reasoning"],
@@ -75,6 +77,7 @@ export const templates: PromptTemplate[] = [
     preset: {
       task: "explain-code",
       language: "unknown",
+      frontendFrameworks: ["unknown"],
       framework: "unknown",
       constraints: {
         selections: ["project-conventions"],
@@ -99,6 +102,7 @@ export const templates: PromptTemplate[] = [
     preset: {
       task: "code-review",
       language: "javascript-typescript",
+      frontendFrameworks: ["unknown"],
       framework: "unknown",
       constraints: {
         selections: ["project-conventions", "explain-reasoning"],
