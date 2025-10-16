@@ -76,6 +76,8 @@ const frontendFrameworkCopy: Record<
     "Compose Astro islands, partial hydration, and integration-friendly component slots.",
   ember:
     "Adhere to Ember Octane conventions with autotracking, Glimmer components, and Ember Data.",
+  compose:
+    "Adopt JetBrains Compose Multiplatform patterns with declarative Kotlin UI components.",
   unknown:
     "Front-end stack is unclear. Confirm whether the UI requires React, Vue, or another framework.",
 };

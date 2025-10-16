@@ -45,6 +45,7 @@ export const frontendFrameworkValues = [
   "qwik",
   "astro",
   "ember",
+  "compose",
   "unknown",
 ] as const;
 

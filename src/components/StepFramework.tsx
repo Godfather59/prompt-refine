@@ -131,6 +131,13 @@ const frontendCatalog: Record<FrontendFramework, FrontendOption> = {
     description: "Ember Octane with autotracking and Glimmer components.",
     icon: <Lamp className="h-4 w-4 text-primary" />,
   },
+  compose: {
+    value: "compose",
+    label: "Compose Multiplatform",
+    description:
+      "JetBrains Compose Multiplatform for Kotlin desktop, mobile, and web surfaces.",
+    icon: <Layers className="h-4 w-4 text-primary" />,
+  },
   unknown: {
     value: "unknown",
     label: "Not sure (front-end)",
@@ -300,6 +307,7 @@ const frameworksByLanguage: Record<WizardData["language"], Availability> = {
       "qwik",
       "astro",
       "ember",
+      "compose",
       "unknown",
     ],
     backend: [
@@ -341,7 +349,7 @@ const frameworksByLanguage: Record<WizardData["language"], Availability> = {
     backend: ["rails", "unknown"],
   },
   kotlin: {
-    frontend: ["unknown"],
+    frontend: ["compose", "unknown"],
     backend: ["spring", "ktor", "unknown"],
   },
   swift: {
@@ -390,6 +398,7 @@ const frameworksByLanguage: Record<WizardData["language"], Availability> = {
       "qwik",
       "astro",
       "ember",
+      "compose",
       "unknown",
     ],
     backend: [
