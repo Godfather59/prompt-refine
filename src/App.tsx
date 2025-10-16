@@ -1,4 +1,3 @@
-import { Github } from "lucide-react";
 import { Wizard } from "./components/Wizard";
 import { PromptPreview } from "./components/PromptPreview";
 import { TooltipProvider } from "./components/ui/tooltip";
