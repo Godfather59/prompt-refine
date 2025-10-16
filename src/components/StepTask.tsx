@@ -13,6 +13,8 @@ import { OptionTile } from "./OptionTile";
 import { SuggestionCard } from "./SuggestionCard";
 import { useWizardStore } from "../store/useWizardStore";
 
+type TaskValue = (typeof options)[number]["value"];
+
 const options = [
   {
     value: "debugging",
@@ -67,6 +69,7 @@ const options = [
 export function StepTask() {
   const task = useWizardStore((state) => state.data.task);
   const setTask = useWizardStore((state) => state.setTask);
+  const next = useWizardStore((state) => state.next);
   const suggestion = useMemo(
     () => [
       "Clarify what a successful outcome looks like (new feature, fix, deep dive).",
@@ -75,6 +78,13 @@ export function StepTask() {
     ],
     [],
   );
+
+  const handleSelect = (value: TaskValue) => {
+    setTask(value);
+    if (value !== "unknown") {
+      next();
+    }
+  };
 
   return (
     <section aria-label="Select task type" className="space-y-4">
@@ -90,7 +100,7 @@ export function StepTask() {
             description={option.description}
             selected={task === option.value}
             icon={option.icon}
-            onClick={() => setTask(option.value)}
+            onClick={() => handleSelect(option.value)}
           />
         ))}
       </div>
@@ -99,7 +109,7 @@ export function StepTask() {
           title="Not sure where to start?"
           suggestions={suggestion}
           defaultLabel="Write Code"
-          onUseDefault={() => setTask("write-code")}
+          onUseDefault={() => handleSelect("write-code")}
         />
       ) : null}
     </section>

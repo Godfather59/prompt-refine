@@ -139,9 +139,20 @@ const options = [
   },
 ] as const;
 
+type LanguageValue = (typeof options)[number]["value"];
+
 export function StepLanguage() {
   const language = useWizardStore((state) => state.data.language);
   const setLanguage = useWizardStore((state) => state.setLanguage);
+  const next = useWizardStore((state) => state.next);
+
+  const handleSelect = (value: LanguageValue) => {
+    const typed = value as WizardData["language"];
+    setLanguage(typed);
+    if (typed !== "unknown") {
+      next();
+    }
+  };
 
   return (
     <section aria-label="Select language" className="space-y-4">
@@ -153,7 +164,7 @@ export function StepLanguage() {
           <button
             key={option.value}
             type="button"
-            onClick={() => setLanguage(option.value as WizardData["language"])}
+            onClick={() => handleSelect(option.value)}
             className={`flex items-start gap-3 rounded-lg border p-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 ${language === option.value ? "border-primary bg-primary/10 shadow-sm" : "border-border hover:border-primary/50 hover:bg-muted/40"}`}
           >
             <span className="mt-0.5 text-primary">{option.icon}</span>
@@ -172,7 +183,7 @@ export function StepLanguage() {
         </label>
         <Select
           value={language}
-          onValueChange={(value) => setLanguage(value as WizardData["language"])}
+          onValueChange={(value) => handleSelect(value as LanguageValue)}
         >
           <SelectTrigger id="language-select" aria-label="Language select">
             <SelectValue placeholder="Select language" />
@@ -195,7 +206,7 @@ export function StepLanguage() {
             "Ask the user whether static typing or scripting speed matters most.",
           ]}
           defaultLabel="TypeScript"
-          onUseDefault={() => setLanguage("javascript-typescript")}
+          onUseDefault={() => handleSelect("javascript-typescript")}
         />
       ) : null}
     </section>

@@ -36,9 +36,19 @@ const options = [
   },
 ] as const;
 
+type TargetValue = (typeof options)[number]["value"];
+
 export function StepTarget() {
   const target = useWizardStore((state) => state.data.target);
   const setTarget = useWizardStore((state) => state.setTarget);
+  const next = useWizardStore((state) => state.next);
+
+  const handleSelect = (value: TargetValue) => {
+    setTarget(value);
+    if (value !== "unknown") {
+      next();
+    }
+  };
 
   return (
     <section aria-label="Target model" className="space-y-4">
@@ -54,7 +64,7 @@ export function StepTarget() {
             description={option.description}
             selected={target === option.value}
             icon={option.icon}
-            onClick={() => setTarget(option.value)}
+            onClick={() => handleSelect(option.value)}
           />
         ))}
       </div>
@@ -67,7 +77,7 @@ export function StepTarget() {
             "Local agents benefit from concise prompts with explicit validation steps.",
           ]}
           defaultLabel="General compatibility"
-          onUseDefault={() => setTarget("general")}
+          onUseDefault={() => handleSelect("general")}
         />
       ) : null}
     </section>
