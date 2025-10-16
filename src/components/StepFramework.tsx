@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, type ReactElement } from "react";
 import {
   Cpu,
   Globe,
@@ -19,7 +19,7 @@ type FrameworkOption = {
   value: WizardData["framework"];
   label: string;
   description: string;
-  icon: JSX.Element;
+  icon: ReactElement;
 };
 
 const frameworkCatalog: Record<WizardData["framework"], FrameworkOption> = {
