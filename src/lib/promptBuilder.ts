@@ -27,6 +27,13 @@ const languageCopy: Record<WizardData["language"], string> = {
   csharp: "Write modern C# targeting .NET 8 patterns and nullable reference types.",
   go: "Produce Go 1.22 compliant code with emphasis on simplicity and clarity.",
   rust: "Favor safe Rust patterns and highlight ownership or borrowing nuances.",
+  php: "Lean on PHP 8.3 features and PSR standards. Highlight framework conventions when relevant.",
+  ruby:
+    "Write Ruby 3.3 code with clear metaprogramming notes and emphasize readability.",
+  kotlin:
+    "Use Kotlin targeting the latest JVM tooling with null-safety and coroutine best practices.",
+  swift:
+    "Produce Swift 6 code mindful of concurrency best practices and Apple platform guidelines.",
   sql: "Provide SQL that is portable across common relational databases.",
   bash:
     "Deliver POSIX-friendly shell scripts and note platform caveats when applicable.",
@@ -38,12 +45,44 @@ const frameworkCopy: Record<WizardData["framework"], string> = {
   node: "Assume a Node.js runtime (LTS). Mind asynchronous flows and dependency hygiene.",
   deno: "Target Deno with native tooling and permissions constraints.",
   bun: "Optimize for Bun's runtime and package runner capabilities.",
+  express:
+    "Build on Express.js with middleware and routing best practices. Emphasize error handling.",
+  fastify:
+    "Use Fastify's plugin architecture and schema-driven validation for performance-sensitive APIs.",
+  nest:
+    "Follow NestJS modular structure with decorators, DI containers, and TypeScript-first patterns.",
   react: "Use modern React with hooks and functional components.",
   next: "Follow Next.js 15 conventions with server components where appropriate.",
+  remix:
+    "Adopt Remix conventions with loader/action separation and progressive enhancement.",
+  angular:
+    "Target Angular 19 with standalone components and typed reactive forms.",
+  vue:
+    "Use Vue 3 with the composition API and `<script setup>` syntax where appropriate.",
+  svelte:
+    "Write Svelte 5 components with stores and reactivity idioms.",
+  sveltekit:
+    "Structure SvelteKit apps with filesystem routing and load functions.",
+  nuxt: "Follow Nuxt 3 patterns with server routes and composables.",
   django: "Adhere to Django 5 best practices and built-in security safeguards.",
   flask: "Structure Flask apps with blueprints and configuration separation.",
+  fastapi:
+    "Rely on FastAPI with Pydantic models, dependency injection, and async I/O.",
+  gin: "Build Go services using Gin with middleware and context-aware routing.",
   spring: "Use Spring Boot 3 idioms and highlight dependency management.",
   dotnet: ".NET runtime assumed. Prefer minimal APIs and dependency injection.",
+  laravel:
+    "Use Laravel 11 conventions with Eloquent models, service containers, and queues.",
+  rails:
+    "Target Ruby on Rails 8 conventions emphasizing MVC structure and Active Record patterns.",
+  ktor:
+    "Use Ktor with coroutines, typed routes, and Gradle-based configuration.",
+  vapor:
+    "Adopt Vapor 4 conventions with Fluent ORM and async HTTP handling.",
+  axum:
+    "Use Axum with Tower middleware, async handlers, and type-safe extractors.",
+  rocket:
+    "Follow Rocket's request guards, responders, and async support for ergonomic routing.",
   unknown:
     "Framework/runtime not specified. Ask for clarification or assume a lightweight runtime temporarily.",
 };

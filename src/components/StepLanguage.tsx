@@ -1,4 +1,4 @@
-﻿import {
+import {
   Code,
   Database,
   FileCode2,
@@ -7,6 +7,10 @@
   CircleHelp,
   Boxes,
   Binary,
+  Braces,
+  Gem,
+  CircuitBoard,
+  Feather,
 } from "lucide-react";
 import type { WizardData } from "../lib/schema";
 import {
@@ -55,6 +59,30 @@ const options = [
     label: "Rust",
     description: "Rust with safety and ownership clarity.",
     icon: <FileCode2 className="h-4 w-4" />,
+  },
+  {
+    value: "php",
+    label: "PHP",
+    description: "PHP 8.3 aligned with PSR conventions.",
+    icon: <Braces className="h-4 w-4" />,
+  },
+  {
+    value: "ruby",
+    label: "Ruby",
+    description: "Ruby 3.3 focused on expressiveness.",
+    icon: <Gem className="h-4 w-4" />,
+  },
+  {
+    value: "kotlin",
+    label: "Kotlin",
+    description: "Kotlin for JVM services leveraging coroutines.",
+    icon: <CircuitBoard className="h-4 w-4" />,
+  },
+  {
+    value: "swift",
+    label: "Swift",
+    description: "Swift 6 with structured concurrency in mind.",
+    icon: <Feather className="h-4 w-4" />,
   },
   {
     value: "sql",
