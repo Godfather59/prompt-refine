@@ -134,7 +134,7 @@ export function Wizard() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="sticky bottom-0 flex flex-wrap justify-between gap-3 border-t border-border bg-card/95 px-6 py-4 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+        <div className="flex flex-wrap justify-between gap-3 border-t border-border bg-card px-6 py-4">
           <Button
             variant="outline"
             onClick={() => previous()}
