@@ -78,7 +78,7 @@ export function Wizard() {
   const StepComponent = components[stepKey];
 
   return (
-    <div className="flex h-full flex-col gap-6">
+    <div className="space-y-6">
       <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -120,7 +120,7 @@ export function Wizard() {
 
       <TemplatePicker />
 
-      <div className="relative flex-1">
+      <div className="rounded-xl border border-border bg-card shadow-sm">
         <AnimatePresence mode="wait">
           <motion.div
             key={stepKey}
@@ -128,32 +128,32 @@ export function Wizard() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.2 }}
-            className="h-full rounded-xl border border-border bg-card p-6 shadow-sm"
+            className="p-6"
           >
             <StepComponent />
           </motion.div>
         </AnimatePresence>
-      </div>
 
-      <div className="flex flex-wrap justify-between gap-3">
-        <Button
-          variant="outline"
-          onClick={() => previous()}
-          disabled={currentStep === 0}
-        >
-          Back
-        </Button>
-        <Button
-          onClick={() => {
-            if (currentStep >= totalSteps - 1) {
-              setCurrentStep(0);
-            } else {
-              next();
-            }
-          }}
-        >
-          {currentStep >= totalSteps - 1 ? "Restart" : "Next"}
-        </Button>
+        <div className="sticky bottom-0 flex flex-wrap justify-between gap-3 border-t border-border bg-card/95 px-6 py-4 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+          <Button
+            variant="outline"
+            onClick={() => previous()}
+            disabled={currentStep === 0}
+          >
+            Back
+          </Button>
+          <Button
+            onClick={() => {
+              if (currentStep >= totalSteps - 1) {
+                setCurrentStep(0);
+              } else {
+                next();
+              }
+            }}
+          >
+            {currentStep >= totalSteps - 1 ? "Restart" : "Next"}
+          </Button>
+        </div>
       </div>
     </div>
   );
