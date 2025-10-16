@@ -59,7 +59,7 @@ prompt-refinery/
 
 1. Update the `deploy.yml` workflow (under `.github/workflows/`) with the correct repository name if needed.
 2. Push to the `main` branch. The GitHub Action will build the site and publish the `dist` directory to the `gh-pages` branch automatically.
-3. In the repository settings on GitHub, set **Pages** to serve from the `gh-pages` branch. The app will be available at `https://<username>.github.io/prompt-refinery/`.
+3. In the repository settings on GitHub, set **Pages** to serve from the `gh-pages` branch. The app will be available at `https://<username>.github.io/prompt-refine/`.
 4. For manual deploys, you can run:
    ```bash
    npm run build

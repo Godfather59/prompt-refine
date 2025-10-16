@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 
 export default defineConfig({
-  base: "/prompt-refinery/",
+  base: "/prompt-refine/",
   plugins: [react()],
   resolve: {
     alias: {
