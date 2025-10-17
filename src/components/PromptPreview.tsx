@@ -157,7 +157,7 @@ export function PromptPreview() {
           })}
         </div>
       </CardHeader>
-      <CardContent className="prose prose-sm max-w-none overflow-y-auto rounded-lg bg-muted/20 p-4 text-foreground shadow-inner">
+      <CardContent className="prose prose-sm max-w-none overflow-y-auto rounded-lg bg-muted/20 p-4 text-foreground shadow-inner dark:prose-invert">
         <ReactMarkdown>{prompt}</ReactMarkdown>
       </CardContent>
     </Card>
