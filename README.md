@@ -1,6 +1,7 @@
 # Prompt Refinery
 
 Prompt Refinery is a guided React wizard that helps engineers craft precise, production-ready prompts for coding-focused AI agents. It asks the right questions, offers safe defaults when you are unsure, and generates a live markdown prompt with export/share actions.
+You can try : https://godfather59.github.io/prompt-refine/
 
 ## Features
 
@@ -43,28 +44,17 @@ Prompt Refinery is a guided React wizard that helps engineers craft precise, pro
 ```
 prompt-refinery/
 +- src/
-¦  +- components/            # Wizard steps, preview, templates, UI primitives
-¦  +- lib/                   # Schema, templates, prompt builder, URL helpers
-¦  +- store/                 # Zustand state management
-¦  +- styles/                # Tailwind global styles
-¦  +- main.tsx, App.tsx      # App entry and layout
+Â¦  +- components/            # Wizard steps, preview, templates, UI primitives
+Â¦  +- lib/                   # Schema, templates, prompt builder, URL helpers
+Â¦  +- store/                 # Zustand state management
+Â¦  +- styles/                # Tailwind global styles
+Â¦  +- main.tsx, App.tsx      # App entry and layout
 +- public/                   # Static assets
 +- eslint.config.js          # Flat ESLint config
 +- tailwind.config.js        # Tailwind + shadcn theme configuration
 +- vite.config.ts            # Vite + Vitest configuration
 +- vitest.setup.ts           # Testing setup (jest-dom)
 ```
-
-## GitHub Pages Deployment
-
-1. Update the `deploy.yml` workflow (under `.github/workflows/`) with the correct repository name if needed.
-2. Push to the `main` branch. The GitHub Action will build the site and publish the `dist` directory to the `gh-pages` branch automatically.
-3. In the repository settings on GitHub, set **Pages** to serve from the `gh-pages` branch. The app will be available at `https://<username>.github.io/prompt-refine/`.
-4. For manual deploys, you can run:
-   ```bash
-   npm run build
-   npm run deploy
-   ```
 
 ## Accessibility
 
